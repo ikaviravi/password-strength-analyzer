@@ -2,10 +2,6 @@
 from zxcvbn import zxcvbn
 import itertools
 import datetime
-
-# -------------------------------
-# Function 1: Analyze password strength
-# -------------------------------
 def analyze_password_strength(password):
     result = zxcvbn(password)
     print("\n🔒 Password Strength Analysis:")
@@ -18,9 +14,7 @@ def analyze_password_strength(password):
         for suggestion in result["feedback"]["suggestions"]:
             print(" - Suggestion:", suggestion)
 
-# -------------------------------
-# Function 2: Generate custom wordlist
-# -------------------------------
+
 def generate_custom_wordlist(name, dob, pet):
     base_words = [name.lower(), dob.replace("-", ""), pet.lower()]
     leet_subs = {
@@ -40,7 +34,6 @@ def generate_custom_wordlist(name, dob, pet):
     for word in base_words:
         words += leetspeak(word)
 
-    # Add years and common suffixes
     suffixes = ['123', '2024', '2025', '!', '@']
     full_list = []
     for word in words:
@@ -50,7 +43,6 @@ def generate_custom_wordlist(name, dob, pet):
 
     full_list = list(set(full_list))  # remove duplicates
 
-    # Save to file
     filename = "custom_wordlist.txt"
     with open(filename, 'w') as f:
         for item in full_list:
@@ -58,9 +50,6 @@ def generate_custom_wordlist(name, dob, pet):
 
     print(f"\n📝 Wordlist generated and saved as '{filename}' with {len(full_list)} entries.")
 
-# -------------------------------
-# Main Program
-# -------------------------------
 def main():
     print("=== 🔐 Password Analyzer & Wordlist Generator ===")
     password = input("\nEnter a password to analyze: ")
@@ -73,6 +62,5 @@ def main():
 
     generate_custom_wordlist(name, dob, pet)
 
-# Run the program
 if __name__ == "__main__":
     main()
